@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.quarktech.apirest.dto.ErroDTO;
+import br.com.quarktech.apirest.dto.MessageDTO;
 import br.com.quarktech.apirest.dto.PedidoDTO;
 import br.com.quarktech.apirest.models.Pedido;
 import br.com.quarktech.apirest.models.Produto;
@@ -47,7 +47,7 @@ public class PedidoResource {
 	@ApiOperation(value = "Criar um pedido", notes = "Deve ser passado os dados do pedido e produtos para ser criado", response = Pedido.class)
 	public ResponseEntity<Object> salvarPedido(@RequestBody @Valid final PedidoDTO pedidoDTO, final Errors errors) {
 	    if (errors.hasErrors()) {
-		   return new ResponseEntity<>(new ErroDTO(errors), HttpStatus.BAD_REQUEST);
+		   return new ResponseEntity<>(new MessageDTO(errors), HttpStatus.BAD_REQUEST);
 	    }
 	    final Pedido pedido = new Pedido();
 	    BeanUtils.copyProperties(pedidoDTO, pedido);
@@ -56,11 +56,16 @@ public class PedidoResource {
 	    	Optional<Produto> produto = produtoRepository.findById(Long.valueOf(String.valueOf(id)));
 	    	if (produto.isPresent()) {
 	    		produtos.add(produto.get());
+	    	} else {
+	    		final MessageDTO messageDTO = new MessageDTO();
+	    		messageDTO.setField("produtos");
+	    		messageDTO.setMessage("Nao foi possivel criar seu pedido, produto inexistente para o id: " + id);
+	    		return new ResponseEntity<>(messageDTO, HttpStatus.NOT_FOUND);
 	    	}
 	    }
 	    pedido.setValorProdutos(new BigDecimal("100.0"));
 	    pedido.setValorTotal(new BigDecimal("50.5"));
-	    pedido.setProdutos(produtos);
+	    pedido.setProduto(produtos);
 		final Pedido save = pedidoRepository.save(pedido);
 		return new ResponseEntity<>(save, HttpStatus.OK);
 	}	
@@ -77,9 +82,11 @@ public class PedidoResource {
 		return pedidoRepository.findById(id);
 	}
 	
-	@DeleteMapping("/pedido")
+	@DeleteMapping("/pedido/{id}")
 	@ApiOperation(value = "Remover um produto", notes = "Deve ser passado os dados do pedido para ser removido", response = Pedido.class)
-	public void deletarPedido(@RequestBody @Valid Pedido pedido) {
+	public void deletarPedido(@PathVariable(value="id") long id) {
+		final Pedido pedido = pedidoRepository.findById(id);
+		pedido.getProduto().clear();
 		pedidoRepository.delete(pedido);
 	}
 	

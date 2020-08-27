@@ -4,14 +4,18 @@ import java.io.Serializable;
 
 import org.springframework.validation.Errors;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import lombok.Data;
 
 @Data
-public class ErroDTO implements Serializable {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class MessageDTO implements Serializable {
 
 	private static final long serialVersionUID = 3511515170246549730L;
 	
-	public ErroDTO(final Errors errors) {
+	public MessageDTO() {}
+	public MessageDTO(final Errors errors) {
 		this.setField(errors.getFieldError().getField());
 		this.setMessage(errors.getFieldError().getDefaultMessage());
 	}

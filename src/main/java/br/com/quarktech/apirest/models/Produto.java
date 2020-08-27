@@ -21,9 +21,9 @@ public class Produto implements Serializable {
 	private static final long serialVersionUID = 1155907789634934190L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
-	
+
 	@NotBlank(message = "Descricao e obrigatoria e string")
 	private String descricao;
 	
@@ -50,5 +50,7 @@ public class Produto implements Serializable {
 	
 	@NotNull(message = "Quantidade e obrigatorio e inteiro")
 	private int quantidade;
+	
+	private boolean apagado = false;	
     
 }

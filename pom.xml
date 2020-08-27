@@ -5,11 +5,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>br.com.quarktech</groupId>
-	<artifactId>api-rest-store</artifactId>
+	<artifactId>store</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
-	<name>api-rest-store</name>
+	<name>store</name>
 	<description>Store</description>
 
 	<parent>
