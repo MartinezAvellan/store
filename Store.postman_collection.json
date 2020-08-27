@@ -1,0 +1,276 @@
+{
+	"info": {
+		"_postman_id": "a0741c7b-8d73-4411-96cb-598c8535d042",
+		"name": "Store",
+		"description": "Api para cadastro de produtos e pedidos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/store/produto",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"descricao\": \"PRODUTO 4\",\r\n    \"sku\": \"SKU-0500-400\",\r\n    \"peso\": 200,\r\n    \"altura\": 55.50,\r\n    \"largura\": 12.50,\r\n    \"profundidade\": 56.20,\r\n    \"fabricante\": \"HUGOS COMPANIES\",\r\n    \"preco\": 100.00,\r\n    \"quantidade\": 3\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/store/produto",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"store",
+						"produto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/store/produtos",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/store/produtos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"store",
+						"produtos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/store/produto/1",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/store/produto/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"store",
+						"produto",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/store/produto",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"id\": 1,\r\n        \"descricao\": \"PRODUTO 1\",\r\n        \"sku\": \"SKU-0500-100\",\r\n        \"peso\": 200.00,\r\n        \"altura\": 55.50,\r\n        \"largura\": 12.50,\r\n        \"profundidade\": 56.20,\r\n        \"fabricante\": \"HUGOS COMPANIES\",\r\n        \"preco\": 100.00,\r\n        \"quantidade\": 3,\r\n        \"apagado\": false\r\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/store/produto",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"store",
+						"produto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/store/produto/4",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/store/produto/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"store",
+						"produto",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/store/pedido",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"nomeCliente\":\"Hugo\",\r\n   \"telefone\":\"+55 (11) 98945-0870\",\r\n   \"produtos\":[1],\r\n   \"desconto\": 15\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/store/pedido",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"store",
+						"pedido"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/store/pedidos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/store/pedidos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"store",
+						"pedidos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/store/pedido/8",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/store/pedido/8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"store",
+						"pedido",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/store/pedido",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 8,\r\n    \"nomeCliente\": \"Hugo aguiar\",\r\n    \"telefone\": \"+55 (11) 98945-0870\",\r\n    \"produto\": [\r\n        {\r\n            \"id\": 1,\r\n            \"descricao\": \"PRODUTO 1\",\r\n            \"sku\": \"SKU-0500-100\",\r\n            \"peso\": 200.00,\r\n            \"altura\": 55.50,\r\n            \"largura\": 12.50,\r\n            \"profundidade\": 56.20,\r\n            \"fabricante\": \"HUGOS COMPANIES\",\r\n            \"preco\": 50.0,\r\n            \"quantidade\": 0,\r\n            \"apagado\": true\r\n        }\r\n    ],\r\n    \"valorProdutos\": 100.00,\r\n    \"desconto\": 15.00,\r\n    \"valorTotal\": 85.00\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/store/pedido",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"store",
+						"pedido"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/store/pedido/12",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/store/pedido/12",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"store",
+						"pedido",
+						"12"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
