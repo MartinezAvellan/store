@@ -53,6 +53,21 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+		  <groupId>io.opentracing.contrib</groupId>
+		  <artifactId>opentracing-spring-jaeger-web-starter</artifactId>
+		  <version>2.0.3</version>
+		</dependency>
+		<dependency>
+		  <groupId>io.github.openfeign.opentracing</groupId>
+		  <artifactId>feign-opentracing</artifactId>
+		  <version>0.3.0</version>
+		</dependency>	
+		<dependency>
+		    <groupId>log4j</groupId>
+		    <artifactId>log4j</artifactId>
+		    <version>1.2.17</version>
+		</dependency>
+		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 		</dependency>
@@ -84,6 +99,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>

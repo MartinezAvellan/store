@@ -11,11 +11,14 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name="PRODUTO")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Produto implements Serializable {
 	
 	private static final long serialVersionUID = 1155907789634934190L;
@@ -49,7 +52,7 @@ public class Produto implements Serializable {
 	private BigDecimal preco;
 	
 	@NotNull(message = "Quantidade e obrigatorio e inteiro")
-	private int quantidade;
+	private Integer quantidade;
 	
 	private boolean apagado = false;	
     

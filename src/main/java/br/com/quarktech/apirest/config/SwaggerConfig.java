@@ -1,31 +1,29 @@
 package br.com.quarktech.apirest.config;
 
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
+import java.util.ArrayList;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
 import springfox.documentation.service.VendorExtension;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-
-
-import static springfox.documentation.builders.PathSelectors.regex;
-
-import java.util.ArrayList;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
 	
 	@Bean
-    public Docket productApi() {
+    public Docket Api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("br.com.quarktech.apirest"))
-                .paths(regex("/store.*"))
+                .apis(RequestHandlerSelectors.any())
+                .paths(PathSelectors.any())
                 .build()
                 .apiInfo(metaInfo());
     }
@@ -38,7 +36,7 @@ public class SwaggerConfig {
                 "API REST para cadastro de produtos e pedidos",
                 "1.0.0",
                 "Terms of Service",
-                new Contact("Hugo A Martinez", "https://github.com/MartinezAvellan", "martinez.avellan@icloud.com"),
+                new Contact("Hugo A Martinez", "https://www.linkedin.com/in/martinezavellan/", "martinez.avellan@icloud.com"),
                 "Apache License Version 2.0",
                 "https://www.apache.org/licesen.html", new ArrayList<VendorExtension>()
         );

@@ -1,6 +1,7 @@
 package br.com.quarktech.apirest.dto;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.validation.constraints.NotNull;
@@ -25,6 +26,6 @@ public class PedidoDTO implements Serializable {
 	
 	@NotNull(message = "O campo desconto nao pode ser vazio")
 	@PositiveOrZero(message = "O campo desconto tem de ser um valor positivo")
-	private int desconto;
+	private BigDecimal desconto;
 	
 }
