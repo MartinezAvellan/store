@@ -26,6 +26,7 @@
 	</properties>
 
 	<dependencies>
+		<!-- Spring Boot -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -46,12 +47,36 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-freemarker</artifactId>
-        </dependency>		
+        </dependency>
+        	
+        <!-- Testing -->	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		    <exclusions>
+		        <exclusion>
+		            <groupId>org.junit.vintage</groupId>
+		            <artifactId>junit-vintage-engine</artifactId>
+		        </exclusion>
+		        <exclusion>
+		            <groupId>junit</groupId>
+		            <artifactId>junit</artifactId>
+		        </exclusion>
+		    </exclusions>			
 		</dependency>
+		<dependency>
+		    <groupId>org.junit.jupiter</groupId>
+		    <artifactId>junit-jupiter-api</artifactId>
+		    <scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.junit.jupiter</groupId>
+		    <artifactId>junit-jupiter-engine</artifactId>
+		    <scope>test</scope>
+		</dependency>
+				
+		 <!-- opentracing + jaeger -->
 		<dependency>
 		  <groupId>io.opentracing.contrib</groupId>
 		  <artifactId>opentracing-spring-jaeger-web-starter</artifactId>
@@ -61,16 +86,27 @@
 		  <groupId>io.github.openfeign.opentracing</groupId>
 		  <artifactId>feign-opentracing</artifactId>
 		  <version>0.3.0</version>
-		</dependency>	
+		</dependency>
+		
+		<!-- Database -->
+		<dependency>
+		    <groupId>com.h2database</groupId>
+		    <artifactId>h2</artifactId>
+		    <scope>test</scope>
+		</dependency>			
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+		</dependency>
+		
+		<!-- log -->
 		<dependency>
 		    <groupId>log4j</groupId>
 		    <artifactId>log4j</artifactId>
 		    <version>1.2.17</version>
 		</dependency>
-		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-		</dependency>
+		
+		<!-- swagger2 + springfox -->
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
@@ -81,6 +117,8 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.7.0</version>
 		</dependency>
+		
+		<!-- lombok + gson -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -97,7 +135,18 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-		</plugins>
+             <plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
+                 <artifactId>maven-surefire-plugin</artifactId>
+                 <dependencies>
+                     <dependency>
+                         <groupId>org.junit.platform</groupId>
+                         <artifactId>junit-platform-surefire-provider</artifactId>
+                         <version>1.2.0</version>
+                     </dependency>
+                 </dependencies>
+             </plugin>			
+		</plugins>		
 	</build>
 
 </project>
